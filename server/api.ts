@@ -1,23 +1,11 @@
 import express, { Request, Response, NextFunction } from 'express';
-import path from 'path';
+import cors from 'cors';
 
 const app = express();
 
-if (process.env.NODE_ENV === 'production') {
-  app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https')
-      res.redirect(301, `https://${req.header('host')}${req.url}`);
-    else next();
-  });
-}
-
-app.use('/public', express.static(path.join(__dirname, '../public')));
-app.use('/build', express.static(path.join(__dirname, '../build')));
-app.use('/src', express.static(path.join(__dirname, '../src')));
-
-app.use('/', (req, res, next) => {
+app.get('/', cors(), (req, res, next) => {
   try {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.json({ foo: 'bar' });
   } catch (error) {
     next(error);
   }
