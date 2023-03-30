@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 app.use('/public', express_1.default.static(path_1.default.join(__dirname, '../public')));
 app.use('/build', express_1.default.static(path_1.default.join(__dirname, '../build')));
-app.use('/dist', express_1.default.static(path_1.default.join(__dirname, '../dist')));
+app.use('/src', express_1.default.static(path_1.default.join(__dirname, '../src')));
 app.use('/', (req, res, next) => {
     try {
         res.sendFile(path_1.default.join(__dirname, '../public/index.html'));

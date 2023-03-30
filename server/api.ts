@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use('/public', express.static(path.join(__dirname, '../public')));
 app.use('/build', express.static(path.join(__dirname, '../build')));
-app.use('/dist', express.static(path.join(__dirname, '../dist')));
+app.use('/src', express.static(path.join(__dirname, '../src')));
 
 app.use('/', (req, res, next) => {
   try {
